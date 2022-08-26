@@ -1,0 +1,276 @@
+$couleur-primaire: #9356DC;
+$couleur-secondaire: #FF79DA;
+$couleur-tertiaire: #99E2D0;
+$gradient : linear-gradient(170deg, rgba(255,121,218,1) 0%, rgba(147,86,220,1) 100%);
+
+@font-face {
+  font-family: "Shrikhand";
+  src: url(Shrikhand/Shrikhand-Regular.ttf) format("truetype");
+}
+
+@mixin flexbox-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin bouton {
+  background: $gradient;
+  color: white;
+  opacity: 1;
+  padding: 2px 20px;
+  border-radius: 180px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);  
+}
+
+@mixin bouton-hover {
+  opacity: 0.9;
+  transition: .2s;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
+  cursor: pointer;    
+}
+
+@keyframes mouvementcard {
+  0% {visibility: hidden;
+      transform: translateY(100%)
+}
+100% {
+      visibility: visible;
+      transform: translateY(0%);
+  }
+}
+
+@keyframes rotationlogo {
+  0% {transform: rotate(90deg);
+}
+  100% {transform: rotate(360deg);
+}
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: white;
+    width: auto;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.header {
+  box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.20);
+  position: relative;
+  @include flexbox-center();
+  height: 80px;
+  width: 100%;
+  &__fleche {
+      color: black;
+      position: absolute;
+      left: 25px;
+  }
+  &__logo {
+      font-family: 'Shrikhand', cursive;
+      height: 50%;
+      width: auto;
+      min-width: 50%;
+      margin: 0;
+      color: black;
+  }
+}
+
+.main {
+  margin: 0;
+  padding: 0;
+  @include flexbox-center;
+  flex-direction: column;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 280px;
+  }
+}
+
+.menu {
+  display: flex;
+  position: relative;
+  margin-top: -50px;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100% - 50px);
+  padding: 25px;
+  background-color: #fafafa;
+  border-radius: 30px 30px 0 0;
+    &__header {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      padding-bottom: 18px;
+      &__titre  {
+        font-family: "Shrikhand", cursive;
+        font-weight: 700;
+        font-size: 24px;
+       }
+      &__coeur {
+        position: relative;
+        margin-right: 10px;
+        font-size: 30px;
+      }
+  }
+    &__section {
+      width: 100%;
+      height: auto;
+      margin-top: 20px;
+      &__titre {
+        color: #7B7B7B;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        text-decoration: underline #99E2D0 3px;
+        text-underline-offset: 8px;
+      }
+    }
+}
+
+
+.card {
+  display: flex;
+  width: 100%;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 20px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  animation: mouvementcard 1s forwards;
+  &__body {
+    width: 80%;
+    padding-left: 10px;
+    cursor: pointer;
+    transition: width 1s ease-in-out;
+    &__titre {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &__description {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  &__prix {
+    display: flex;
+    max-width: 30%;
+    height: 100%;
+    cursor: pointer;
+    &--euros {
+      padding-top: 34px;
+      padding-right: 20px;
+    }
+  }
+  &__check {
+  display: flex;
+  height: 100%;
+  width: 0px;
+  justify-content: center;
+  align-items: center;
+  color: transparent;
+  background-color: #99E2D0;
+  border-radius: 0 15px 15px 0;
+  transition: width 0.5s ease-in-out;
+  }
+  &:hover .card__body {
+    width: 66%;
+  }
+  &:hover .card__check {
+    width: 60px;
+    color: white;
+  }
+  &:hover i {
+    transform: rotate(90deg);
+    animation: rotationlogo 0.5s forwards;
+  }
+}
+
+.menu__bouton__commander {
+  text-align: center;
+  @include bouton();
+  & p {
+    padding: 40px;
+  }
+}
+
+.card1 {
+  visibility: hidden;
+  animation-delay: 0.2s;
+}
+.card2 {
+  visibility: hidden;
+  animation-delay: 0.4s;
+}
+.card3 {
+  visibility: hidden;
+  animation-delay: 0.6s;
+}
+.card4 {
+  visibility: hidden;
+  animation-delay: 0.8s;
+}
+.card5 {
+  visibility: hidden;
+  animation-delay: 1s;
+}
+.card6 {
+  visibility: hidden;
+  animation-delay: 1.2s;
+}
+.card7 {
+  visibility: hidden;
+  animation-delay: 1.4s;
+}
+.card8 {
+  visibility: hidden;
+  animation-delay: 1.6s;
+}
+.card9 {
+  visibility: hidden;
+  animation-delay: 1.8s;
+}
+.card10 {
+  visibility: hidden;
+  animation-delay: 2s;
+}
+
+
+.footer {
+  width: 100%;  
+  height:auto;
+  color: white;
+  padding-left: 26px;
+  padding-top: 14px;
+  background-color: #353535;
+  &__logopetit {
+    font-family: "Shrikhand", Verdana, sans-serif;
+  }
+  &__liens {
+    width:fit-content;
+    padding-bottom: 20px;
+  }
+  &__lien {
+    display: flex;
+    height: 34px;
+    align-items: center;
+    & i {
+      padding-right: 12px;
+    }
+  }
+}
