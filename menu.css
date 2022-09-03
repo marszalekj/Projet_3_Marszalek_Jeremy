@@ -24,7 +24,10 @@
 }
 @-webkit-keyframes rotationlogo {
   0% {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
   }
   100% {
     transform: rotate(360deg);
@@ -32,7 +35,10 @@
 }
 @keyframes rotationlogo {
   0% {
-    transform: rotate(90deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
   }
   100% {
     transform: rotate(360deg);
@@ -56,21 +62,23 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80px;
+  height: 60px;
   width: 100%;
 }
 .header__fleche {
   color: black;
   position: absolute;
   left: 25px;
+  font-weight: bolder;
+  font-size: 26px;
 }
 .header__logo {
   font-family: "Shrikhand", cursive;
   height: 50%;
-  width: auto;
-  min-width: 50%;
+  padding-bottom: 14px;
   margin: 0;
   color: black;
+  font-weight: lighter;
 }
 
 .main {
@@ -107,39 +115,67 @@ a {
 .menu__header {
   display: flex;
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding-bottom: 18px;
 }
 .menu__header__titre {
   font-family: "Shrikhand", cursive;
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: lighter;
+  font-size: 26px;
 }
 .menu__header__coeur {
-  position: relative;
-  margin-right: 10px;
-  font-size: 30px;
+  display: flex;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-size: 32px;
+  cursor: pointer;
+}
+.menu__header__coeur--plein {
+  opacity: 0;
+  background: linear-gradient(170deg, rgb(255, 121, 218) 0%, rgb(147, 86, 220) 100%);
+  background-clip: border-box;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: 0.8s ease-in-out;
+}
+.menu__header__coeur--plein:hover {
+  opacity: 1;
 }
 .menu__section {
   width: 100%;
   height: auto;
-  margin-top: 20px;
+  margin-top: 6px;
 }
 .menu__section__titre {
+  display: flex;
   color: #7B7B7B;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  -webkit-text-decoration: underline #99E2D0 3px;
-          text-decoration: underline #99E2D0 3px;
-  text-underline-offset: 8px;
+}
+
+h3 {
+  font-weight: lighter;
+  font-size: 18px;
+}
+
+.traitvert {
+  display: flex;
+  background: #99E2D0;
+  margin-top: -14px;
+  margin-bottom: 12px;
+  height: 4px;
+  width: 44px;
 }
 
 .card {
   display: flex;
   width: 100%;
-  height: 80px;
+  height: 70px;
   justify-content: space-between;
   align-items: center;
   background-color: white;
@@ -156,14 +192,20 @@ a {
   transition: width 1s ease-in-out;
 }
 .card__body__titre {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .card__body__description {
+  font-weight: lighter;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 8px;
+  font-size: 15px;
 }
 .card__prix {
   display: flex;
@@ -172,7 +214,7 @@ a {
   cursor: pointer;
 }
 .card__prix--euros {
-  padding-top: 34px;
+  padding-top: 24px;
   padding-right: 20px;
 }
 .card__check {
@@ -184,21 +226,31 @@ a {
   color: transparent;
   background-color: #99E2D0;
   border-radius: 0 15px 15px 0;
-  transition: width 0.5s ease-in-out;
+  transition: 1s ease-in-out;
 }
 .card:hover .card__body {
-  width: 66%;
+  width: 60%;
 }
 .card:hover .card__check {
-  width: 60px;
+  width: 80px;
   color: white;
 }
 .card:hover i {
-  transform: rotate(90deg);
-  -webkit-animation: rotationlogo 0.5s forwards;
-          animation: rotationlogo 0.5s forwards;
+  transform: rotate(0deg);
+  -webkit-animation: rotationlogo 0.8s forwards;
+          animation: rotationlogo 0.8s forwards;
 }
 
+.fa-check-circle {
+  font-size: 22px;
+}
+
+.menu__bouton {
+  padding: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .menu__bouton__commander {
   text-align: center;
   background: linear-gradient(170deg, rgb(255, 121, 218) 0%, rgb(147, 86, 220) 100%);
@@ -207,9 +259,17 @@ a {
   padding: 2px 20px;
   border-radius: 180px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  padding: 18px 60px 18px 60px;
 }
-.menu__bouton__commander p {
-  padding: 40px;
+.menu__bouton__commander:hover {
+  opacity: 0.9;
+  transition: 0.2s;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+.menu__bouton p {
+  font-weight: 300;
+  font-size: 20px;
 }
 
 .card1 {
@@ -273,7 +333,6 @@ a {
 }
 
 .footer {
-  width: 100%;
   height: auto;
   color: white;
   padding-left: 26px;
@@ -282,6 +341,10 @@ a {
 }
 .footer__logopetit {
   font-family: "Shrikhand", Verdana, sans-serif;
+  font-weight: lighter;
+  font-size: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 .footer__liens {
   width: -webkit-fit-content;
@@ -296,4 +359,56 @@ a {
 }
 .footer__lien i {
   padding-right: 12px;
+}
+.footer__texte {
+  font-weight: lighter;
+}
+.footer__texte a {
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  .menu {
+    flex-direction: row;
+    padding-bottom: 180px;
+  }
+  .menu__header {
+    position: absolute;
+    top: -10px;
+    width: 42%;
+    left: 36px;
+  }
+  .menu__section {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 30%;
+    padding: 10px;
+  }
+  .menu__bouton {
+    position: absolute;
+    left: 38%;
+    bottom: 5%;
+  }
+  .menu__bouton__commander {
+    padding: 18px 40px 18px 40px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .menu {
+    padding-bottom: 0;
+  }
+  .menu__header {
+    width: 69%;
+  }
+  .menu__section {
+    width: 22%;
+  }
+  .menu__bouton {
+    position: inherit;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
 }/*# sourceMappingURL=menu.css.map */

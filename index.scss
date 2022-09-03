@@ -18,7 +18,7 @@ $gradient : linear-gradient(170deg, rgba(255,121,218,1) 0%, rgba(147,86,220,1) 1
   background: $gradient;
   color: white;
   opacity: 1;
-  padding: 2px 20px;
+  padding: 2px 12px 2px 12px;
   border-radius: 180px;
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);  
 }
@@ -29,6 +29,37 @@ $gradient : linear-gradient(170deg, rgba(255,121,218,1) 0%, rgba(147,86,220,1) 1
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.6);
   cursor: pointer;    
 }
+
+@keyframes disparition {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+} 
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+@keyframes pulse {
+  0%, 100% {
+    color: black;
+}
+  25%, 75% {
+    color: $couleur-primaire;
+}
+  50% {
+    color: $couleur-secondaire;
+  }
+}
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -46,13 +77,15 @@ a {
   box-shadow: 0px 5px 6px 0px rgba(0,0,0,0.20);
   position: relative;
   @include flexbox-center();
-  height: 80px;
+  height: 60px;
   width: 100%;
+  padding-top: 10px;
 
 }
 
 .logo {
-  width: 250px;
+  width: 170px;
+  height: auto;
   font-family: 'Shrikhand';
   color: black;
 }
@@ -64,147 +97,57 @@ a {
   flex-direction: column;
 }
 
-/*
-$timing: 2s;
-$color-shadow: lightgray;
-$pan-color-light: #3949AB;
-$pan-color-dark: #5C6BC0;
-$loader-color: #FDD835;
-
-@keyframes loader {
-  0% {
-    width: 10%;
-    transform: rotate(0deg);
-  }
-  10% {
-    left: 0%;
-    transform: rotate(0deg);
-  }
-  20% {
-    width: 0%;
-    left: 20%;
-  }
-  30% {
-    width: 25%;
-  }
-  50% {
-    left: 15%;
-    width: 35%;
-  }
-  70% {
-    width: 30%;
-    left: 18%;
-    transform: rotate(240deg);
-  }
-  90% {
-    width: 30%;
-    left: 10%;
-  }
-  100% {
-    width: 2%;
-    left: 25%;
-    transform: rotate(360deg);
-  
-  }
+.loader {
+  @include flexbox-center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  backdrop-filter: blur(5px);
+  animation: disparition 3s forwards;
+&__logo {
+  font-family: "Shrikhand", cursive;
+  font-size: 24px;
+  position: relative;
+  top: 92px;
+  left: 9px;
+  animation: pulse 3s forwards ;
 }
-
-@keyframes pan {
-  0% {
-    transform: rotate(0deg);
-    transform-origin: top right;
-  }
-  10% {
-    transform: rotate(-2deg);
-    transform-origin: top right;
-  }
-  50% {
-    transform: rotate(15deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  
-  }
-}
-
-@keyframes shadow {
-  0% {
-    width: 30%;
-  }
-  50% {
-    width: 40%;
-    left: 20px;
-  }
-  100% {
-    width: 30%;
-  
-
-  }
-}
-
-.pan-loader {
+&__cercle {
+  width: 150px;
+  height: 150px;
+  border: 5px solid;
+  border-color: transparent $couleur-secondaire ;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 3s normal both;
+    &::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 180px;
   height: 180px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  margin: 100px auto;
-  justify-content: center;
-
-  .loader {
-    position: relative;
-    top: 10%;
-    left: 0;
-    z-index: -1;
-    width: 60%;
-    height: 45%;
-    border: 10px solid transparent;
-    border-bottom: 10px solid $loader-color;
-    border-radius: 50%;
-    animation: loader $timing forwards;
-    animation-timing-function: linear;
-  }
-  .pan-container {
-    display:flex;
-    width: 100%;
-    animation: pan $timing forwards ;
-  }
-  .pan {
-    width: 60%;
-    height: 20px;
-    background: linear-gradient($pan-color-light, $pan-color-dark);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-  .handle {
-    width: 40%;
-    height: 10px;
-    background: linear-gradient($pan-color-light, $pan-color-dark);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-  }
-  
-  .shadow {
-    position: relative;
-    top: 15%;
-    left: 15%;
-    width: 30%;
-    height: 8px;
-    background: $color-shadow;
-    // box-shadow: 5px 0 8px 4px $color-shadow;
-    border-radius: 20px;
-    animation: shadow $timing forwards ;
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: $couleur-primaire transparent;
+    }
   }
 }
-*/ 
+
+
 
 .lieu {
   @include flexbox-center();
   background: #f3f3f3;
   color: black;
+  &__icon {
+    padding-right: 8px;
+  }
   &__ville {
       margin-left: 14px;
       font-weight: 500;
@@ -212,11 +155,17 @@ $loader-color: #FDD835;
 }   
 
 .explorateur {
+  display: flex;
   background: #fafafa;
   width: 100%;
+  justify-content: center;
+  text-align: center;
+
   &__description {
     padding: 18px;
+    padding-bottom: 48px;
     flex-direction: column;
+    justify-content: center;
   }
   &__titre {
     text-align: center;
@@ -224,12 +173,13 @@ $loader-color: #FDD835;
   &__texte {
     text-align: center;
     padding-bottom: 10px;
+    font-weight: lighter;
   }
   &__bouton {
     text-align: center;
-    margin-left: 40px;
-    margin-right: 40px;
-    @include bouton ();
+    margin-left: 22%;
+    margin-right: 22%;
+@include bouton ();
     &:hover {
       @include bouton-hover();
     }
@@ -238,39 +188,60 @@ $loader-color: #FDD835;
 
 .fonctionnement {
   background: white;
+  padding: 0 5% 10% 5%;
+
+  
   &__titre {
-    margin-left: 12px;
+
+    padding-top: 20px;
   }
   &__liste {
-    display: flex;
+    display: flex; 
+    justify-content: center;
     flex-direction: column;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 90%;
   }
   &__étapes {
     @include flexbox-center();
-    width: auto;    
-    height: 60px;
+    height: 64px;
+    width: auto;
+    position: relative;
     border-radius: 20px;
-    margin-bottom: 20px;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-bottom: 22px;
     color: black;
     background: #fafafa;
-    position: relative;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.16);
       &:hover {
-        @include bouton-hover();
+        cursor: pointer;
+        background-color: #f2eafb ;        
       }
-    }
-  &__numéro {
-      background-color: $couleur-primaire;
-      color: white;
-      position: absolute;
-      padding: 3px 8px 3px 8px;
-      border-radius: 600px;
-      transform: translateX(-600%);
+      &:hover .fonctionnement__icon {
+        color: $couleur-primaire;
+      }
   }
+    &__numéro {
+      @include flexbox-center();
+      position: absolute;
+      top: 4px;
+      bottom: 0px;
+      right: 0;
+      left: -8px;
+      background-color: $couleur-primaire;
+      width: 26px;
+      height:26px;
+      border-radius: 24px;
+      color: white;
+      font-size: 14px;
+      }
+    
   &__icon {
       margin-right: 20px;
+      font-size: 17px;
+  }
+  &__texte {
+      margin-right: 40px;
   }
 }
 
@@ -279,9 +250,15 @@ $loader-color: #FDD835;
   padding: 0 5% 12% 5%;
   flex-direction: column;
   background-color: #fafafa;
-  
+  &__titre {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
   
   &__cards {
+    display: flex;
+    flex-wrap: wrap;
+
     width: 100%;
     height: auto;
     flex-direction: column; 
@@ -289,15 +266,19 @@ $loader-color: #FDD835;
 }
 .card {
     display: flex;
+    position: relative;
     flex-direction: column;
     min-width: 200px;
     width: 100%;
     height: 300px;
     background-color: white;
     border-radius: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 22px;
     box-shadow: 0px 0px 50px rgb(0 0 0 / 30%);
     transition: all 1s cubic-bezier(0.55, 1.2, 0.90, 1);
+    &:hover {
+      @include bouton-hover();
+    }
     &__image {
       position: relative;
       overflow: hidden;
@@ -306,7 +287,6 @@ $loader-color: #FDD835;
       border-radius: 16px 16px 0 0;   
     }
     &__img {
-      
       object-fit: cover;
       width: 130%;
       position: absolute;
@@ -327,7 +307,7 @@ $loader-color: #FDD835;
       padding-bottom: 5px;
       &__nom {
         font-weight: bold;
-        font-size: 24px;
+        font-size: 20px;
         padding-bottom: 10px;
       }
       &__localisation {
@@ -340,7 +320,7 @@ $loader-color: #FDD835;
       position: absolute;
       bottom: 40px;
       right: 30px;
-      font-size: 36px;
+      font-size: 26px;
       cursor: pointer;
       &--plein {
         opacity: 0;
@@ -349,12 +329,10 @@ $loader-color: #FDD835;
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
-        transform: skewX(0deg);
-        transition: 0.4s ease-in-out;
+        transition: 0.8s ease-in-out;
       }
       &--plein:hover {
         opacity: 1;
-        transform: skewX(0deg);
       }
     }
   }
@@ -371,8 +349,9 @@ $loader-color: #FDD835;
   background-color: #99E2D0;
   padding: 10px;
   color: green;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.5px;
+  border-radius: 4px;
 }
 
 .footer {
@@ -383,6 +362,8 @@ $loader-color: #FDD835;
   background-color: #353535;
   &__logopetit {
     font-family: "Shrikhand", Verdana, sans-serif;
+    font-weight: lighter;
+    font-size: 24px;
   }
   &__liens {
     width:fit-content;
@@ -396,4 +377,39 @@ $loader-color: #FDD835;
       padding-right: 12px;
     }
   }
+  &__texte {
+    font-weight: lighter;
+   & a {
+    color: white;
+   }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+.fonctionnement {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  &__liste {
+    margin: 0;
+    margin-top: 40px;
+  }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+.restaurants {
+display: flex;
+align-items: center;
+  }
+    .restaurants__cards {
+      flex-direction: row;
+      justify-content: center;
+      width: 940px;
+      padding: 20px;
+    }
+    .restaurants__card {
+      width: 400px;
+      margin: 20px;
+    }
 }
