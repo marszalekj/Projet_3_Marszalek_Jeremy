@@ -411,4 +411,10 @@ h3 {
     left: 0;
     top: 0;
   }
+  .card__body__titre {
+    font-size: 14px;
+  }
+  .card__body__description {
+    font-size: 13px;
+  }
 }/*# sourceMappingURL=menu.css.map */
