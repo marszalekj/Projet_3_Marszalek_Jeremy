@@ -346,6 +346,9 @@ h3 {
   padding-top: 12px;
   padding-bottom: 12px;
 }
+.footer__logopetit a {
+  color: white;
+}
 .footer__liens {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -375,7 +378,7 @@ h3 {
   .menu__header {
     position: absolute;
     top: -10px;
-    width: 42%;
+    width: 92%;
     left: 36px;
   }
   .menu__section {
@@ -396,25 +399,10 @@ h3 {
   }
 }
 @media only screen and (min-width: 992px) {
-  .menu {
-    padding-bottom: 0;
-  }
-  .menu__header {
-    width: 69%;
-  }
-  .menu__section {
-    width: 22%;
-  }
-  .menu__bouton {
-    position: inherit;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
   .card__body__titre {
-    font-size: 14px;
+    font-size: 17px;
   }
   .card__body__description {
-    font-size: 13px;
+    font-size: 16px;
   }
 }/*# sourceMappingURL=menu.css.map */

@@ -380,6 +380,9 @@ a {
   font-weight: lighter;
   font-size: 24px;
 }
+.footer__logopetit a {
+  color: white;
+}
 .footer__liens {
   width: -webkit-fit-content;
   width: -moz-fit-content;
